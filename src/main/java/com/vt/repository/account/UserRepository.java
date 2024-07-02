@@ -1,0 +1,9 @@
+package com.vt.repository.account;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.vt.model.User;
+
+public interface UserRepository extends JpaRepository<User, Integer> { 
+    User findByUsername(String username);
+    User findByEmail(String email);
+}
