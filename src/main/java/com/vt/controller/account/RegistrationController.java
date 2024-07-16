@@ -1,59 +1,71 @@
 package com.vt.controller.account;
 
-import com.vt.model.User;
-import com.vt.service.account.RegistrationService;
+import com.vt.model.Users;
+import com.vt.repository.account.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import jakarta.validation.Valid;
+import java.security.SecureRandom;
 
 @Controller
 public class RegistrationController {
 
     @Autowired
-    private RegistrationService registrationService;
+    private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    // Hiển thị form đăng ký
+    private static final SecureRandom secureRandom = new SecureRandom(); 
+
     @GetMapping("/register")
-    public String showRegistrationForm(Model model) {
-        model.addAttribute("user", new User()); // Tạo một đối tượng User mới và thêm vào model
-        return "register"; // Trả về tên template "register.html"
+    public String register() {
+        return "register"; 
     }
 
-    // Xử lý form đăng ký khi người dùng submit
     @PostMapping("/register")
-    public String registerUser(
-            @ModelAttribute("user") @Valid User user, // Lấy dữ liệu từ form và validate
-            BindingResult bindingResult, // Kết quả validate
-            Model model // Model để truyền dữ liệu về view
-    ) {
-        // Nếu có lỗi validate, trả về lại trang đăng ký
-        if (bindingResult.hasErrors()) {
+    public String register(@RequestParam String username,
+                           @RequestParam String password,
+                           @RequestParam String email,
+                           Model model) {
+
+        // Kiểm tra xem tên người dùng đã tồn tại chưa
+        if (userRepository.findByUsername(username).isPresent()) {
+            model.addAttribute("errorMessage", "Tên người dùng đã tồn tại.");
             return "register";
         }
 
-        // Xác thực mật khẩu
-        if (!user.getPassword().equals(user.getConfirmPassword())) {
-            model.addAttribute("errorMessage", "Mật khẩu không khớp.");
-            return "register";
-        }
+        // Tạo userId ngẫu nhiên và đảm bảo duy nhất
+        String userId;
+        do {
+            userId = "#" + generateRandomNumericString(6);
+        } while (userRepository.existsById(userId));
 
-        // Gọi service để đăng ký người dùng
-        boolean registrationSuccess = registrationService.registerUser(user);
+        // Tạo đối tượng Users và lưu vào cơ sở dữ liệu
+        Users newUser = new Users();
+        newUser.setUserId(userId);
+        newUser.setUsername(username);
+        newUser.setPassword(passwordEncoder.encode(password)); // Mã hóa mật khẩu
+        newUser.setEmail(email);
+        newUser.setRole("USER");
 
-        // Nếu đăng ký thành công, chuyển hướng đến trang đăng nhập
-        if (registrationSuccess) {
-            return "redirect:/login";
-        } else { 
-            // Nếu đăng ký thất bại (ví dụ: username hoặc email đã tồn tại),
-            // thêm thông báo lỗi vào model và trả về trang đăng ký
-            model.addAttribute("errorMessage", "Tên người dùng hoặc email đã tồn tại.");
-            return "register";
+        userRepository.save(newUser);
+
+        model.addAttribute("successMessage", "Đăng ký thành công!");
+        return "register";
+    }
+
+    // Hàm tạo chuỗi ngẫu nhiên gồm các chữ số
+    private String generateRandomNumericString(int length) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            int randomDigit = secureRandom.nextInt(10);
+            sb.append(randomDigit);
         }
+        return sb.toString();
     }
 }
