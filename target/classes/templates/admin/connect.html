@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect Phantom Wallet</title>
+    <style>
+        /* Styling đơn giản cho giao diện */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #wallet-info {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Connect Phantom Wallet</h1>
+    <button id="connect-wallet">Connect Wallet</button>
+    <button id="logout-wallet" style="display:none;">Logout Wallet</button>
+    <div id="wallet-info"></div>
+    <script src="https://cdn.jsdelivr.net/npm/@solana/web3.js@1.35.0/lib/index.iife.min.js"></script>
+    <script>
+        const connectWalletButton = document.getElementById('connect-wallet');
+        const logoutWalletButton = document.getElementById('logout-wallet');
+        const walletInfoDiv = document.getElementById('wallet-info');
+
+        connectWalletButton.addEventListener('click', async () => {
+            try {
+                const provider = window.solana;
+                if (provider && provider.isPhantom) {
+                    await provider.connect();
+                    const publicKey = provider.publicKey.toString();
+                    console.log('Connected to Phantom Wallet:', publicKey);
+
+                    // Hiển thị ID ví lên giao diện
+                    walletInfoDiv.innerHTML = `
+                        <p>Wallet ID: ${publicKey}</p>
+                    `;
+                    connectWalletButton.style.display = 'none';
+                    logoutWalletButton.style.display = 'block';
+
+                    // Kết nối đến devnet thay vì mainnet-beta
+                    const connection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl('devnet'));
+                    const balance = await connection.getBalance(new solanaWeb3.PublicKey(publicKey));
+                    const balanceInSOL = balance / solanaWeb3.LAMPORTS_PER_SOL;
+
+                    // Hiển thị số dư lên giao diện
+                    walletInfoDiv.innerHTML += `
+                        <p>Balance: ${balanceInSOL.toFixed(4)} SOL</p>
+                    `;
+
+                    // Gửi yêu cầu đến backend với public key
+                    const response = await fetch('/api/account-info?publicKey=' + encodeURIComponent(publicKey), {
+                        method: 'POST'
+                    });
+                    const data = await response.json();
+
+                    // Hiển thị thông tin tài khoản và tên người dùng trên giao diện
+                    if (data.username) {
+                        walletInfoDiv.innerHTML += `
+                            <p>Username: ${data.username}</p>
+                        `;
+                    }
+                    if (data.accountInfo) {
+                        walletInfoDiv.innerHTML += `
+                            <p>Account Info: ${data.accountInfo}</p>
+                        `;
+                    } else {
+                        walletInfoDiv.innerHTML += `
+                            <p>Account Info: No additional info available</p>
+                        `;
+                    }
+
+                } else {
+                    alert('Phantom Wallet not found. Please install it.');
+                }
+            } catch (error) {
+                console.error('Connection failed:', error);
+            }
+        });
+
+        logoutWalletButton.addEventListener('click', async () => {
+            try {
+                const provider = window.solana;
+                if (provider && provider.isPhantom) {
+                    // Disconnect from Phantom Wallet
+                    await provider.disconnect();
+                    console.log('Disconnected from Phantom Wallet');
+
+                    // Xóa thông tin ví khỏi giao diện
+                    walletInfoDiv.innerHTML = '';
+                    connectWalletButton.style.display = 'block';
+                    logoutWalletButton.style.display = 'none';
+                } else {
+                    alert('Phantom Wallet not found. Please install it.');
+                }
+            } catch (error) {
+                console.error('Disconnection failed:', error);
+            }
+        });
+    </script>
+</body>
+
+</html>
