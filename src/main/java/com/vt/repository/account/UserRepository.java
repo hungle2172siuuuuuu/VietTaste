@@ -1,9 +1,12 @@
 package com.vt.repository.account;
 
+import com.vt.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.vt.model.User;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository extends JpaRepository<User, Integer> { 
-    User findByUsername(String username);
-    User findByEmail(String email);
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<Users, String> {
+    Optional<Users> findByUsername(String username);
 }
