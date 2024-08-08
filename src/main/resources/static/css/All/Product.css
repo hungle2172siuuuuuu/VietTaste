@@ -1,0 +1,36 @@
+.product-card{
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+.product-card .img{
+    border: 2px solid #000;
+    border-radius: 5px;
+}
+
+.product-card .product-link{
+    height: 40px;
+}
+
+.product-card .product-link a{
+    font-weight: bold;
+    transition: 0.2s;
+    overflow: hidden;
+    &:hover{
+        transform: translate(-3px, -3px);
+        border: 2px solid #000;
+        color: #000;
+        font-weight: bold;
+        box-shadow: 3px 3px #000;
+        transition: 0.2s;
+        border-radius: 5px;
+    }
+
+    &:active{
+        box-shadow: none;
+        transform: translate(3px, 3px);
+        background-color: #fff;
+    }
+}
+

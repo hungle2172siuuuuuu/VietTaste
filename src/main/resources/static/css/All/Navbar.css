@@ -1,0 +1,54 @@
+.navbar .navbar-brand{
+    font-weight: 900;
+    font-size: 70px;
+    color: #EB5B00;
+    text-shadow: 4px 3px #000;
+    font-family: 'iCiel Cadena',sans-serif;
+}
+
+.navbar .search{
+    border: 2px solid #000;
+    border-radius: 5px;
+    color: #000;
+    padding: 5px 10px;
+    overflow: hidden;
+}
+
+.navbar .search input{
+    border: none;
+}
+
+.navbar .nav-item{
+    border: 2px solid #000;
+    padding: 0px 5px;
+    border-radius: 5px;
+    box-shadow: 3px 3px #000;
+    transition: 0.2s;
+    &:active{
+        box-shadow: none;
+        transform: translate(3px, 3px);
+    }
+}
+
+.navbar .nav-link{
+    font-size: 20px;
+}
+
+    /* Cart */
+    .cart-container{
+        background-color: none;
+    }
+    
+    .cart-container .btn-close{
+        border: 2px solid #000;
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        box-shadow: 2px 2px #000;
+        transition: 0.2s;
+        &:active{
+            box-shadow: none;
+            transform: translate(3px, 3px);
+        }
+    }
+

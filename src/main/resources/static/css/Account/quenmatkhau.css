@@ -1,0 +1,87 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #f0f2f0, #0081cf);
+}
+
+.container {
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width: 400px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 35px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+input[type="email"] {
+  width: 100%;
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="email"]:focus {
+  border-color: #2980b9;
+  outline: none;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+button[type="submit"] {
+  margin-left: 100px; /* Đẩy button sang phải */
+  background-color: #2980b9;
+  color: white;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  width: auto; /* Tự động điều chỉnh chiều rộng */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #217dbb;
+  transform: translateY(-2px);
+}
+
+.back-to-login {
+  margin-top: 25px;
+}
+
+.back-to-login a {
+  color: #3498db;
+  text-decoration: none;
+  /* background-image: linear-gradient(to right, #3498db, #2980b9); */
+  background-size: 200% 100%;
+  background-position: -100%;
+  display: inline-block;
+  transition: background-position 0.3s ease;
+}
+
+.back-to-login a:hover {
+  background-position: 0;
+}
