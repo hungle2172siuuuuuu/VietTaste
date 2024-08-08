@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tên người dùng</title>
+    <!-- font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bahnschrift:wght@400;500;600;700&display=swap" rel="stylesheet">   
+
+    <!-- bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- css -->
+<link rel="stylesheet" th:href="@{\css\Account\personal_info.css}">
+<link rel="stylesheet" th:href="@{\css\All\Navbar.css}" >  
+<link rel="stylesheet" th:href="@{\css\All\Product.css}" >   
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg sticky-top bg-white" th:fragment="navbar">
+        <div class="container-fluid row">
+          <a class="navbar-brand col-3 text-center" href="#">VietTaste</a>
+          <form action="" class="search col-7 d-flex justify-content-center">
+            <input type="text" class="w-100">
+            <button class="btn"><i class="bi bi-search"></i>    </button>
+          </form>
+          <div class="collapse navbar-collapse col-2 " id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-evenly">
+              <li class="nav-item"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                <a class="nav-link text-dark"><i class="bi bi-cart-fill"></i></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" href="#"><i class="bi bi-gear-fill"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container">
+        <main class="row personal-info-container">
+            <aside class="col-3">
+                <div class="personal-info">
+                    <header class="row">
+                        <img src="" alt="" class="col-4">
+                        <div class="col-8">
+                            <h5 class="m-0">Tên người dùng</h5>
+                            <p>emailnguoidung@email.com</p>
+                        </div>
+                    </header>
+                    <main>
+                        <div class="mb-3 row">
+                            <span class="col-6 text-dark fw-blod h5">NFT balance</span>
+                            <span class="text-end col-6">0.70 SOL</span>
+                        </div>
+                        <div class="mb-3 row">
+                            <span class="col-6 text-dark fw-blod h5">Số giao dịch</span>
+                            <span class="text-end col-6">2</span>
+                        </div>
+                        <div class="mb-3 row">
+                            <span class="col-6 text-dark fw-blod h5">Địa chỉ ví</span>
+                            <span class="text-end col-6">BXv7ZCxWFG6...</span>
+                        </div>
+                    </main>
+                    <footer class="text-center p-3">
+                        <div class="dropend">
+                            <button type="button" class="btn btn-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-fill"></i>Quản lý tài khoản
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Đổi mật khẩu</a></li>
+                              <li><a class="dropdown-item" href="#">Chỉnh sửa thông tin</a></li>
+                              <li><a class="dropdown-item" href="#">Đăng xuất</a></li>
+                            </ul>
+                        </div>
+                        <div class="dropend">
+                            <button type="button" class="btn btn-dropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-wallet-fill"></i>Quản lý ví
+                            </button>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="#">Kết nối ví</a></li>
+                              <li><a class="dropdown-item" href="#">Đăng xuất ví</a></li>
+                            </ul>
+                        </div>
+                    </footer>
+                </div>
+            </aside>
+            <article class="col-9">
+              <div class="my-nft row">
+                  <div class="col-3 p-2">
+                    <div class="product-card">
+                      <img src="../img/BunDauMamTom.jpg" alt="" class="img w-100 mb-1" height="180px">
+                      <div class="product-info">
+                        <H5>Bún Đậu Mắm Tôm</H5>
+                        <p>0.45 SOL</p>
+                      </div>
+                      <div class="product-link d-flex justify-content-end">
+                        <a href="#" class="btn">Chỉnh sửa</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-3 p-2">
+                    <div class="product-card">
+                      <img src="../img/ComTam.jpg" alt="" class="img w-100 mb-1" height="180px">
+                      <div class="product-info">
+                        <H5>Cơm Gà</H5>
+                        <p>0.25 SOL</p>
+                      </div>
+                      <div class="product-link d-flex justify-content-end">
+                        <a href="#" class="btn">Chỉnh sửa</a>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </article>
+          </main>
+      </div>
+
+      <div class="offcanvas offcanvas-end cart-container m- 2 p-2 rounded border border-3  border-dark" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h1 id="offcanvasRightLabel" class="fw-bold">Giỏ hàng</h1>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Chọn tất cả (số lượng hàng)
+            </label>
+          </div>
+          <hr>
+          <div class="form-check rounded border border-1 border-dark">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <div class="cart-product">
+              <img src=".jpg" alt="Ảnh sản phẩm">
+              <h5 class="fw-blod">Tên sản phẩm</h5>
+              <p>Giá</p>
+            </div>
+            <div class="cart-product-btn">  
+              <a href="" class="btn">Xóa</a>
+            </div>
+          </div>
+          <hr>
+          <div class="cart-btn">
+            <a href="" class="btn">Thanh toán</a>
+            <a href="" class="btn">Xóa</a>
+          </div>
+        </div>
+      </div>
+</body>
+    <!-- bootstrap 5 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</html>

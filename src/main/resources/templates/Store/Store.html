@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store</title>
+    <!-- font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bahnschrift:wght@400;500;600;700&display=swap" rel="stylesheet">   
+
+    <!-- bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- css -->
+<link rel="stylesheet" th:href="@{\css\Store\Store.css}" >
+<link rel="stylesheet" th:href="@{\css\All\Product.css}" >
+<link rel="stylesheet" th:href="@{\css\All\Navbar.css}" >
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg sticky-top bg-white" th:fragment="navbar">
+    <div class="container-fluid row">
+      <a class="navbar-brand col-3 text-center" href="#">VietTaste</a>
+      <form action="" class="search col-7 d-flex justify-content-center">
+        <input type="text" class="w-100">
+        <button class="btn"><i class="bi bi-search"></i></button>
+      </form>
+      <div class="collapse navbar-collapse col-2 " id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 w-100 justify-content-evenly">
+          <li class="nav-item"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <a class="nav-link text-dark"><i class="bi bi-cart-fill"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-dark" href="#"><i class="bi bi-gear-fill"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+      <main class="store-body row p-0 m-0">
+        <aside class="store-menu col-2">
+            <div class="store-body-menu">
+                <ul class="menu nav flex-column text-center">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Gian hàng</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Tin tức</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Hỗ trợ</a>
+                    </li>
+                  </ul>
+            </div>
+            <a class="store-body-account row" href="/your_info">
+                <div class="avatar col-4">
+                  <img src="" alt="" >
+                </div>
+                <div class="user-info col-8">
+                  <h6 class="text-dark">Tên người dùng</h6>
+                  <p ><i class="bi bi-bell-fill"></i>Thông báo</p>
+                </div>
+            </a>
+        </aside>
+        <div class="col-2"></div>
+        <article class="show-product col-10">
+          <div class="banner bg-dark mb-3">
+            <img src="../img/Banner.jpg" class="w-100 img-rounded" alt="">
+          </div>
+          <div class="row">
+            <div class="col-3 p-2">
+              <div class="product-card">
+                <img src="../img/BunDauMamTom.jpg" alt="" class="img w-100 mb-1" height="250px">
+                <div class="product-info">
+                  <H5>Bún Đậu Mắm Tôm</H5>
+                  <p>0.45 SOL</p>
+                </div>
+                <div class="product-link d-flex justify-content-evenly">
+                  <a href="#" class="btn">Mua</a>
+                  <a href="#" class="btn ">Thêm vào giỏ hàng</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 p-2">
+              <div class="product-card">
+                <img src="../img/ComTam.jpg" alt="" class="img w-100 mb-1" height="250px">
+                <div class="product-info">
+                  <H5>Cơm Gà</H5>
+                  <p>0.25 SOL</p>
+                </div>
+                <div class="product-link d-flex justify-content-evenly">
+                  <a href="#" class="btn">Mua</a>
+                  <a href="#" class="btn ">Thêm vào giỏ hàng</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 p-2">
+              <div class="product-card">
+                <img src="../img/BanhTranTron.jpg" alt="" class="img w-100 mb-1" height="250px">
+                <div class="product-info">
+                  <H5>Bánh Trán Trộn</H5>
+                  <p>0.15 SOL</p>
+                </div>
+                <div class="product-link d-flex justify-content-evenly">
+                  <a href="#" class="btn">Mua</a>
+                  <a href="#" class="btn ">Thêm vào giỏ hàng</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 p-2">
+              <div class="product-card">
+                <img src="../img/BunRieu.jpg" alt="" class="img w-100 mb-1" height="250px">
+                <div class="product-info">
+                  <H5>Phở Bò</H5>
+                  <p>0.35 SOL</p>
+                </div>
+                <div class="product-link d-flex justify-content-evenly">
+                  <a href="#" class="btn">Mua</a>
+                  <a href="#" class="btn ">Thêm vào giỏ hàng</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        
+      </main>
+
+      <div class="offcanvas offcanvas-end cart-container m-2 p-2 rounded border border-3  border-dark" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h1 id="offcanvasRightLabel" class="fw-bold">Giỏ hàng</h1>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">
+              Chọn tất cả (số lượng hàng)
+            </label>
+          </div>
+          <hr>
+          <div class="form-check rounded border border-1 border-dark d-flex w-100 p-1">
+            <input class="form-check-input col-1" type="checkbox" value="" id="flexCheckDefault">
+            <div class="cart-product w-75 d-flex row">
+              <div class="col-5 border border-2 border-dark rounded p-0"><img src="../img/BunRieu.jpg" class="rounded" width="80%" alt="Ảnh sản phẩm"></div>
+              <div class="col-7">
+                <h5 class="fw-blod">Phở Bò</h5>
+                <p>0.35 SOL</p>
+              </div>
+            </div>
+            <div class="cart-product-btn"> 
+              <a href="" class="btn">Thanh toán</a> 
+              <a href="" class="btn">Xóa</a>
+            </div>
+          </div>
+          <hr>
+          <div class="cart-btn">
+            <a href="" class="btn">Thanh toán</a>
+            <a href="" class="btn">Xóa</a>
+          </div>
+        </div>
+      </div>
+    <!-- bootstrap 5 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
