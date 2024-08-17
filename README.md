@@ -1,8 +1,8 @@
 # Chỗ này để note lại các thay đổi
-Bất kỳ thay đổi nào về POM, về Code, hãy ghi theo cấu trúc sau
+Bất kỳ thay đổi nào về POM, về Code, hãy ghi theo cấu trúc sau.
 ### Tên file đã sửa + thao tác đã sửa
 ```
-Code đã sửa
+Code đã sửa (nếu chỉ sửa một đoạn code nhỏ thì ghi, còn nếu sửa code nhiều thì khỏi)
 ```
 Thêm file mới vào thì ghi ngày sửa, tên file, mô tả chức năng để làm gì.
 Ghi tiêu đề thì dùng "#", càng nhiều dấu thăng, tiêu đề càng nhỏ.
