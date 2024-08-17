@@ -6,4 +6,4 @@ Code đã sửa
 ```
 Thêm file mới vào thì khỏi ghi
 Ghi tiêu đề thì dùng "#", số dấu thăng càng cao, tiêu đề càng nhỏ
-Code thì để ở trong cặp ký tự " ``` ``` "
+Code thì để ở trong cặp ký tự "```" "```"
