@@ -10,4 +10,5 @@ Code thì để ở trong cặp ký tự "``` ```" (3 dấu `, nút nằm ở cu
 
 ### Hưng: 17/08/2024, sửa file personal_info, thêm chức năng hiển thị PublicKey.
 ### Hưng: 27/08/2024, chỉnh sửa file SQL theo cấu trúc mới.
+### Hưng: 27/08/2024, thêm vào các entity class vào DAO class.
 
