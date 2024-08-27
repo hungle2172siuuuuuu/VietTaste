@@ -9,3 +9,5 @@ Ghi tiêu đề thì dùng "#", càng nhiều dấu thăng, tiêu đề càng nh
 Code thì để ở trong cặp ký tự "``` ```" (3 dấu `, nút nằm ở cuối cùng, tay trái hàng phím số)
 
 ### Hưng: 17/08/2024, sửa file personal_info, thêm chức năng hiển thị PublicKey.
+### Hưng: 27/08/2024, chỉnh sửa file SQL theo cấu trúc mới.
+
