@@ -1,0 +1,31 @@
+package com.vt.model;
+
+import jakarta.persistence.EmbeddedId;
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "Food_Category")
+public class FoodCategory {
+    @EmbeddedId
+    private FoodCategoryId id;
+
+    @ManyToOne
+    @MapsId("foodId")
+    @JoinColumn(name = "Food_Id", nullable = false)
+    private Food food;
+
+    @ManyToOne
+    @MapsId("categoryId")
+    @JoinColumn(name = "Category_Id", nullable = false)
+    private Category category;
+}
