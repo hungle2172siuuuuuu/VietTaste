@@ -45,9 +45,11 @@ public class RegisterController {
             userId = "#" + generateRandomNumericString(6);
         } while (userRepository.existsById(userId));
 
-        user.setUserId(userId);
+        user.setId(userId);
 
         user.setRole("USER");
+        
+        user.setStatus("Active"); 
 
         userRepository.save(user);
         model.addAttribute("successMessage", "Đăng ký thành công!");
