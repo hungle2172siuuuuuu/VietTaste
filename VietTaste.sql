@@ -270,8 +270,8 @@ GO
 -- Insert data into Food table
 INSERT INTO Food (Id, Name, Description, Image, Price, Stall_Id)
 VALUES 
-('pk1', 'Food 1', 'Description of Food 1', 'image1.jpg', 0.5, 'MC53L8'),
-('pk2', 'Food 2', 'Description of Food 2', 'image2.jpg', 1.0, 'V8CR94');
+('FI91L7', 'Food 1', 'Description of Food 1', 'image1.jpg', 0.5, 'MC53L8'),
+('RG8A49', 'Food 2', 'Description of Food 2', 'image2.jpg', 1.0, 'V8CR94');
 GO
 
 -- Insert data into Wallet table
@@ -288,9 +288,39 @@ VALUES
 (2, 'Category 2');
 GO
 
+INSERT INTO Food_Category (Food_Id, Category_Id)
+VALUES
+('pk1', 1),
+('pk2', 2);
+GO
+
 -- Insert data into Cart table
 INSERT INTO Cart (User_Id, Food_Id)
 VALUES 
 ('1FG28A', 'pk1'),  -- Giả sử User_Id '1' là '1FG28A'
 ('28GF9B', 'pk2');     -- Giả sử User_Id '2' là '28GF9B'
+GO
+
+INSERT INTO Restaurant (Id, Name, Registration_Number, Address, Phone_Number, Email, Business_License, Food_Safety_License, User_Id, Status)
+VALUES
+('R1', N'Nhà hàng Phở Hương', '123456789', N'123 Nguyễn Văn Cừ, Quận 5, TP.HCM', '0901234567', 'phohuong@gmail.com', 'BL12345', 'FSL67890', '27G895', 'Active'),
+('R2', N'Quán Cơm Tấm Sài Gòn', '987654321', N'456 Lê Văn Sỹ, Quận 3, TP.HCM', '0987654321', 'comtam@gmail.com', 'BL54321', 'FSL09876', '27G895', 'Active');
+GO
+
+INSERT INTO Orders (Create_Date, Id, Status, User_Id)
+VALUES
+('2023-09-10', 'O1', 'Completed', '3F4724'),
+('2023-09-11', 'O2', 'Pending', '4J8435');
+GO
+
+INSERT INTO OrderDetail (Id, Quantity, Food_Id, Order_Id)
+VALUES
+('OD1', 2, 'pk1', 'O1'),
+('OD2', 1, 'pk2', 'O2');
+GO
+
+INSERT INTO Food_Category (Food_Id, Category_Id)
+VALUES
+('pk1', 1),
+('pk2', 2);
 GO
