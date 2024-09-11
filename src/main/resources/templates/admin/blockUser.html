@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Block User</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
+
 <body>
     <div class="container mt-5">
         <h2>Block User</h2>
@@ -21,17 +23,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="user : ${users}">
-                    <td th:text="${user.userId}"></td>
+                <tr th:each="user : ${userList}">
+                    <td th:text="${user.id}"></td>
                     <td th:text="${user.username}"></td>
                     <td th:text="${user.email}"></td>
                     <td th:text="${user.role}"></td>
                     <td th:text="${user.status}"></td>
                     <td>
-                        <form th:action="@{/block-user}" method="post">
-                            <input type="hidden" name="userId" th:value="${user.userId}">
-                            <button type="submit" class="btn btn-danger">Block</button>
-                        </form>
+                        <div th:switch="${user.status}">
+                            <form th:action="@{/block-user}" method="post">
+                                <input type="hidden" name="id" th:value="${user.id}">
+                                <button th:case="'Active'" type="submit" class="btn btn-danger">Block</button>
+                                <button th:case="'Blocked'" type="submit" class="btn btn-success">Unblock</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
             </tbody>
@@ -42,4 +47,5 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
