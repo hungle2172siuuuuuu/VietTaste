@@ -277,7 +277,7 @@ GO
 -- Insert data into Wallet table
 INSERT INTO Wallet (Public_Key, Balance, User_Id)
 VALUES 
-('3iajTu42pVS3CJZJWpGSMVqrExEwiEac58xGQyKCydpH', 100000, '1FG28A'),  -- Giả sử User_Id '1' là '1FG28A'
+('DMfXVqiVtzyxYAareLi8vSD3jf2F5GhVV9meAEQZ72WR', 100000, '1FG28A'),  -- Giả sử User_Id '1' là '1FG28A'
 ('CmYaAsc4jn75wzPDkG97hGVTDMQ3P1jUVJ71fDjSrR2T', 200000, '4J8435');     -- Giả sử User_Id '2' là '28GF9B'
 GO
 
